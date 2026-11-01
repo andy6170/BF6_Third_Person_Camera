@@ -14,12 +14,11 @@
  *   - the camera reset after leaving a vehicle (works around a game bug)
  *
  * Public API:
- *   ThirdPersonEnable(false) - stop controlling the camera (the aim dot is hidden)
- *   ThirdPersonEnable(true)  - start controlling the camera again
+ *   enableThirdPerson(false) - stop controlling the camera (the aim dot is hidden)
+ *   enableThirdPerson(true)  - start controlling the camera again
  *
  * Third person is enabled by default.
  *
- * Note: To control in blocks, add a JsAction block with the string "ThirdPersonEnable" and a bool (true/false). This script is enabled by 
  *
  * Note: the event entry points at the bottom are the global functions the game calls. If another file in the same
  * script already defines one of them, merge the two bodies instead of keeping both.
@@ -123,7 +122,7 @@ const players = new Map<number, [mod.Player, CameraPlayerData]>();
  * alone so another mode can take over without a visible jump. Re-enabling makes the camera choices apply again on
  * the next tick.
  */
-export function ThirdPersonEnable(enable: boolean): void {
+export function enableThirdPerson(enable: boolean): void {
     if (enable === cameraEnabled) return;
     cameraEnabled = enable;
 
