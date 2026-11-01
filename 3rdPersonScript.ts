@@ -4,17 +4,22 @@
  * Drop this file into a Portal script. It is self-contained: the only dependencies are the `mod` global and the
  * standard Portal event entry points below. Nothing else needs to be imported.
  *
+ *
  * It provides:
  *   - the player UI widget used as the aim dot
  *   - the shoulder camera for standing / crouching / prone / sprinting
  *   - the first-person zoom for scoped sniper rifles and launchers
  *   - shoulder switching when the player interacts
  *   - the parallax-corrected aim dot
- *   - the camera reset after leaving a vehicle (works around an engine bug)
+ *   - the camera reset after leaving a vehicle (works around a game bug)
  *
  * Public API:
- *   EnableCamera(false) - stop controlling the camera (the aim dot is hidden)
- *   EnableCamera(true)  - start controlling the camera again
+ *   ThirdPersonEnable(false) - stop controlling the camera (the aim dot is hidden)
+ *   ThirdPersonEnable(true)  - start controlling the camera again
+ *
+ * Third person is enabled by default.
+ *
+ * Note: To control in blocks, add a JsAction block with the string "ThirdPersonEnable" and a bool (true/false). This script is enabled by 
  *
  * Note: the event entry points at the bottom are the global functions the game calls. If another file in the same
  * script already defines one of them, merge the two bodies instead of keeping both.
