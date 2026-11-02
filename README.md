@@ -7,6 +7,9 @@ https://github.com/andy6170/Battlefront-Supremacy
 
 Created by andy6170 and TabbedScamper
 
+Tutorial and explanation: https://youtu.be/jHKCPhZuWRw
+
+
 # Features
 - Shoulder swapping
 - Dynamic ADS (1st person when aiming with snipers and launchers)
