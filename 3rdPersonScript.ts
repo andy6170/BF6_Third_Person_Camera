@@ -4,21 +4,20 @@
  * Drop this file into a Portal script. It is self-contained: the only dependencies are the `mod` global and the
  * standard Portal event entry points below. Nothing else needs to be imported.
  *
- *
  * It provides:
  *   - the player UI widget used as the aim dot
  *   - the shoulder camera for standing / crouching / prone / sprinting
  *   - the first-person zoom for scoped sniper rifles and launchers
  *   - shoulder switching when the player interacts
  *   - the parallax-corrected aim dot
- *   - the camera reset after leaving a vehicle (works around a game bug)
+ *   - the camera reset after leaving a vehicle (works around an engine bug)
  *
  * Public API:
- *   enableThirdPerson(false) - stop controlling the camera (the aim dot is hidden)
- *   enableThirdPerson(true)  - start controlling the camera again
- *
- * Third person is enabled by default.
- *
+ *   EnableCamera(false) - stop controlling the camera (the aim dot is hidden)
+ *   EnableCamera(true)  - start controlling the camera again
+ * 
+ * Third person is enabled by default. For Blocks, use the JsAction block with String "main.enableThirdPerson" and 2 bools (true, true  || false, false)
+ * The block requires all fields to be filled hence the requirement.
  *
  * Note: the event entry points at the bottom are the global functions the game calls. If another file in the same
  * script already defines one of them, merge the two bodies instead of keeping both.
@@ -28,7 +27,7 @@
 // Tunables
 // ---------------------------------------------------------------------------------------------------------------
 
-// The script runs at about 60 Hz. A camera change 33 ms later is not visible, so every tick is fine.
+// You can adjust how often the camera updates. 1 will update every tick, 2 will update every other tick.
 const CAMERA_EVERY_TICKS = 1;
 
 const SHOULDER_LEFT_CAM = -0.45;
@@ -68,7 +67,7 @@ const DOT_FOV_RAD = 0.8167;         // the third-person camera's fixed vertical 
 const DOT_BELOW_M = 0.034;          // the bullet line runs this far below the camera axis
 const DOT_UI_HALF_HEIGHT = 540;     // UI units from screen centre to the top edge (1080-high UI)
 const DOT_FOCAL_UI = DOT_UI_HALF_HEIGHT / Math.tan(DOT_FOV_RAD / 2);
-const DOT_FOR_BOTS = true;         // This is used to simulate players while testing solo for performance
+const DOT_FOR_BOTS = false;         // This is used to simulate players while testing solo for performance
 const DOT_MISS_GRACE_TICKS = 30;    // 0.5 s
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -122,7 +121,7 @@ const players = new Map<number, [mod.Player, CameraPlayerData]>();
  * alone so another mode can take over without a visible jump. Re-enabling makes the camera choices apply again on
  * the next tick.
  */
-export function enableThirdPerson(enable: boolean): void {
+export function enableThirdPerson(enable: any, blocks: any): void {
     if (enable === cameraEnabled) return;
     cameraEnabled = enable;
 
