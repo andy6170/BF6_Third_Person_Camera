@@ -36,3 +36,21 @@ Tutorial and explanation: https://youtu.be/jHKCPhZuWRw
 _Provided parameters (String, Boolean) do not match any overload. Function supports the following overloads: (String, AnyType, AnyType)._
 
 <img width="575" height="349" alt="image" src="https://github.com/user-attachments/assets/1da38ce9-5ae0-4403-a90b-a182010eb195" />
+
+
+
+# Controller Users
+
+If you are playing with a controller, you will need to assign the interact button.
+
+By default this is not assigned and will not trigger the shoulder swapping.
+
+To fix this: 
+
+- Go into OPTIONS > CONTROLLER > EDIT SETTINGS > Infantry/Passenger Control Mapping
+
+<img width="1914" height="1078" alt="image" src="https://github.com/user-attachments/assets/39760311-5cf6-4142-8d7d-c6e7a99c104c" />
+
+<img width="1805" height="470" alt="image" src="https://github.com/user-attachments/assets/72e42d15-933f-43e8-bfe0-e2befd6353f9" />
+
+- Interact (PRESS) / Quick Upgrade (HOLD) = Assign this to a button. Default would be Square for Playstation or X for Xbox
